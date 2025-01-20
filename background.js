@@ -24,7 +24,7 @@ chrome.webNavigation.onBeforeNavigate.addListener(
         // Increment the counter
         chrome.storage.local.get("aiRemovalCount", (data) => {
           const count = data.aiRemovalCount || 0;
-          chrome.storage.local.set({ aiRemovalCount: count + 1 });
+          chrome.storage.local.set({ aiRemovalCount: count + 1 }); // Increment and store the new count
         });
 
         chrome.tabs.update(details.tabId, { url: newUrl });

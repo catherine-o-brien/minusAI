@@ -27,5 +27,18 @@
       ],
       "js": ["content.js"]
     }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["index.html", "style.css"],
+      "matches": [
+        "https://www.google.com/*",
+        "https://www.bing.com/*",
+        "https://search.yahoo.com/*",
+        "https://duckduckgo.com/*",
+        "https://www.baidu.com/*",
+        "https://www.ecosia.org/*"
+      ]
+    }
   ]
 }
