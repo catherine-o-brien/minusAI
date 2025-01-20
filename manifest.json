@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Remove AI Results",
+  "version": "1.1",
+  "description": "Automatically appends -ai to all search queries.",
+  "permissions": ["activeTab", "scripting", "storage", "webNavigation"],
+  "host_permissions": [
+    "https://www.google.com/*",
+    "https://www.bing.com/*",
+    "https://search.yahoo.com/*",
+    "https://duckduckgo.com/*",
+    "https://www.baidu.com/*",
+    "https://www.ecosia.org/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.google.com/*",
+        "https://www.bing.com/*",
+        "https://search.yahoo.com/*",
+        "https://duckduckgo.com/*",
+        "https://www.baidu.com/*",
+        "https://www.ecosia.org/*"
+      ],
+      "js": ["content.js"]
+    }
+  ]
+}
