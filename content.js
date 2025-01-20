@@ -4,9 +4,25 @@ function setupToggleButton() {
   const toggleButton = document.getElementById('toggle-button');
   const counterContainer = document.getElementById('counter-container');
 
+  // Load the minimized state from storage
+  chrome.storage.local.get('minimized', (data) => {
+    if (data.minimized) {
+      counterContainer.classList.add('minimized'); // Apply the minimized state
+      toggleButton.textContent = '+'; // Set the button to "+"
+    } else {
+      toggleButton.textContent = '-'; // Set the button to "-"
+    }
+  });
+
   toggleButton.addEventListener('click', () => {
+    const isMinimized = counterContainer.classList.contains('minimized');
     counterContainer.classList.toggle('minimized');
-    toggleButton.textContent = counterContainer.classList.contains('minimized') ? 'Maximize' : 'Minimize';
+
+    // Update the button text
+    toggleButton.textContent = isMinimized ? '-' : '+';
+
+    // Save the minimized state to storage for future visits
+    chrome.storage.local.set({ minimized: !isMinimized });
   });
 }
 
